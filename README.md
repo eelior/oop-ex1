@@ -19,15 +19,34 @@ B.json and Calls.csv files represents the building and all the calls for the giv
 
 ## Algorithm Overview
 
+Initialization:
 
-## Testing
+- Building
 
+- Calls list
 
-## Running the simulation
+- Elevators source locations
 
+- Elevators departure time
 
-## Results
+- Elevators destinations
 
+- Elevators arrival time
+
+Elevator Allocating:
+ 
+* for each call in calls array:
+  * for each elevator in elevators array: 
+    * calculate estimated arrival time of elevator to to its desired destination based on: call time, source locations and destination locations. set minimum arrival time and save with elevator index
+  * if the call source and destination can fit inside current elevator process:
+    * update the estimated arrival time of the current elevator destination to the current time plus another stop duration
+  * if the call source can fit in the current process but call's destination does not:
+    * update elevator's destination to the call's destination and update the time to minimum time
+  * if both source and destination can not fit into the current elevator process:
+    * update elevator's start location to call's source location
+    * update elevator arrival time to start location to sum of: current destination arrival time, time from current destination to the call's source, another stop time
+    * update elevator's destination floor to call's destination
+    * update elevator's time of arrival to destination to minimum time
 
 ## Assignment Links
 
