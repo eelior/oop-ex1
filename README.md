@@ -33,13 +33,12 @@ Initialization:
 
 
 Elevator Allocating:
+
+* while calls list is not empty:
+  * for each elevator:
+   *   gets a workload capacity according to the elevator's efficiency
+   *   the elevator is assigned calls according to its capacity at any given time
  
-* for each call in calls array:
-  * for each elevator in elevators array: 
-    * check elevator time
-    * if it is zero, add one
-    * create calls division portions
-    * give every elevator the number of calls by its speed until there are no calls left
 
 ## Assignment Links
 
