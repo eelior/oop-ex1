@@ -5,7 +5,6 @@ class Elevators:
         num_of_elevators = 0
         for i in building_file['_elevators']:
             i['_currFloor'] = i['_minFloor']
-            i['_direction'] = "idle"
             self.elevatorsArray.append(i)
             num_of_elevators = num_of_elevators+1
 
