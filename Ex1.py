@@ -5,15 +5,27 @@ import math
 from Elevators import Elevators
 
 if __name__ == "__main__":
+    # reading the input files from the users
     file = open(str(sys.argv[1]), )
     callsfile = open(str(sys.argv[2]), )
     op_f = open(str(sys.argv[3]), 'w', newline='')
-    calls_str = list(csv.reader(callsfile, delimiter=','))
-    output = csv.writer(op_f)
     building_str = json.load(file)
+
+    # creating a list from the calls
+    calls_str = list(csv.reader(callsfile, delimiter=','))
+
+    # create an output file
+    output = csv.writer(op_f)
+
     elevators = Elevators(building_str)
+
+    # go through the calls
     while calls_str:
+
+        # check which elevator fits best and allocate the call to it
         for current_elevator in elevators.elevatorsArray:
+
+            # workload distribution between the elevators by it's speed
             elevator_speed = int(current_elevator['_speed'])
             if elevator_speed == 0:
                 elevator_speed = elevator_speed + 1
