@@ -1,46 +1,30 @@
+import json
 import csv
-from src.elevatorAlgo import ElevatorAlgo
 import sys
+import math
+from Elevators import Elevators
 
-# take args
-buildingFile = sys.argv[1]
-callsFile = sys.argv[2]
-outputFile = sys.argv[3]
-
-# init algo
-elevatorAlgo = ElevatorAlgo(buildingFile, callsFile, outputFile)
-
-# copying calls csv file to an object
-file = open(callsFile)
-callsList = {}
-i = 0
-try:
-    data = csv.reader(file)
-    for row in data:
-        callsList[i] = row
-        i += 1
-finally:
-    file.close()
-
-# allocating each call its best elevator
-j = 0
-for j in range(0, i):
-    row = callsList.get(j)
-    time = row[1]
-    src = row[2]
-    dest = row[3]
-    allocatedElevator = elevatorAlgo.allocate(
-        src, dest, time)
-    # row[4] we can ignore
-    row[5] = allocatedElevator
-
-# copying proccessed calls object back to csv file
-file = open(outputFile, "w", newline='')
-j = 0
-try:
-    writer = csv.writer(file)
-    for j in range(0, i):
-        row = callsList.get(j)
-        writer.writerow(row)
-finally:
-    file.close()
+if __name__ == "__main__":
+    file = open(str(sys.argv[1]), )
+    callsfile = open(str(sys.argv[2]), )
+    op_f = open(str(sys.argv[3]), 'w', newline='')
+    calls_str = list(csv.reader(callsfile, delimiter=','))
+    output = csv.writer(op_f)
+    building_str = json.load(file)
+    elevators = Elevators(building_str)
+    while calls_str:
+        for current_elevator in elevators.elevatorsArray:
+            elevator_speed = int(current_elevator['_speed'])
+            if elevator_speed == 0:
+                elevator_speed = elevator_speed + 1
+            calls_division = int(
+                len(calls_str) / (math.ceil(current_elevator['_speed'])))
+            index = 0
+            while index < elevator_speed and len(calls_str):
+                output.writerow([calls_str[index*calls_division][0], calls_str[index*calls_division][1], calls_str[index*calls_division]
+                                [2], calls_str[index*calls_division][3], calls_str[index*calls_division][4], current_elevator['_id']])
+                index = index + 1
+            index = elevator_speed - 1
+            while index >= 0 and calls_str:
+                calls_str.pop(index * calls_division)
+                index = index - 1
