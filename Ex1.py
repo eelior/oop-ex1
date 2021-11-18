@@ -32,9 +32,16 @@ if __name__ == "__main__":
             calls_division = int(
                 len(calls_str) / (math.ceil(current_elevator['_speed'])))
             index = 0
+            # give every elevator the number of calls by its speed until there are no calls left
             while index < elevator_speed and len(calls_str):
-                output.writerow([calls_str[index*calls_division][0], calls_str[index*calls_division][1], calls_str[index*calls_division]
-                                [2], calls_str[index*calls_division][3], calls_str[index*calls_division][4], current_elevator['_id']])
+                output.writerow([
+                    calls_str[index*calls_division][0],
+                    calls_str[index*calls_division][1],
+                    calls_str[index*calls_division][2],
+                    calls_str[index*calls_division][3],
+                    calls_str[index*calls_division][4],
+                    current_elevator['_id']
+                ])
                 index = index + 1
             index = elevator_speed - 1
             while index >= 0 and calls_str:

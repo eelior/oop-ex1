@@ -1,6 +1,10 @@
 Ex1_OOP
 # Object Oriented Programming - Exercise 1
 
+authors: 
+- Itamar Caspi: 315874982
+- Elior Buskila 205493323
+
 This task is dedicated to learning python when it is actually a sequel to task 0 (performed in java).
 Similar to task 0, this task also opens up an algorithm for a system of smart elevators of a high-rise building.
 In this task the challenge will focus on the offline version of the problem - meaning all the readings are given to us in advance, and we are only required to embed each reading in a benevolent manner (so that the rule of waiting for elevators is reduced to a minimum). In fact, the current task focuses mainly on the challenge of assigning a "call" to the elevator, but in order to perform this task properly we will also need to understand and simulate the movement of the elevators.
@@ -11,42 +15,31 @@ B.json and Calls.csv files represents the building and all the calls for the giv
 
 - Wikipedia | Elevator algorithm: Wikipedia gives an overview on the elevator algorithm and the idea of the SCAN algorithm. [https://en.wikipedia.org/wiki/Elevator_algorithm]
 
-- GeeksForGeeks | Smart Elevator: On GeeksForGeeks a students covers the topic and suggets a perspective on the problem and it's possible solution. [https://www.geeksforgeeks.org/smart-elevator-pro-geek-cup]
+- On-line Algorithms versus Off-line Algorithms for the Elevator: In most scheduling problems, if the problem were off-line, i.e. we know the arrival time of a request, then we can find the optimal schedule. But in reality this is not the case and we need to use some heuristics or strategies or on-line algorithms for scheduling.  The question is which strategy is better.
+ [https://studylib.net/doc/7878746/on-line-algorithms-versus-off-line-algorithms-for-the-ele...]
 
-- Disk Scheduling Algorithms: Digging deeper, we look into the Disk Scheduling Algorithm and it’s need and purposes.
-[https://www.lnjpitchapra.in/wp-content/uploads/2020/04/file_5e97ef5088ac0.pdf]
+- This report investigates how effective different elevator group control
+strategies are on a system with two elevators, and which optimizations that
+can improve the performance of these strategies.
+[https://www.diva-portal.org/smash/get/diva2:668654/FULLTEXT01.pdf]
 
 
 ## Algorithm Overview
 
 Initialization:
 
-- Building
+- Reading the input files from the users
+- Creating a list from the calls
 
-- Calls list
-
-- Elevators source locations
-
-- Elevators departure time
-
-- Elevators destinations
-
-- Elevators arrival time
 
 Elevator Allocating:
  
 * for each call in calls array:
   * for each elevator in elevators array: 
-    * calculate estimated arrival time of elevator to to its desired destination based on: call time, source locations and destination locations. set minimum arrival time and save with elevator index
-  * if the call source and destination can fit inside current elevator process:
-    * update the estimated arrival time of the current elevator destination to the current time plus another stop duration
-  * if the call source can fit in the current process but call's destination does not:
-    * update elevator's destination to the call's destination and update the time to minimum time
-  * if both source and destination can not fit into the current elevator process:
-    * update elevator's start location to call's source location
-    * update elevator arrival time to start location to sum of: current destination arrival time, time from current destination to the call's source, another stop time
-    * update elevator's destination floor to call's destination
-    * update elevator's time of arrival to destination to minimum time
+    * check elevator time
+    * if it is zero, add one
+    * create calls division portions
+    * give every elevator the number of calls by its speed until there are no calls left
 
 ## Assignment Links
 
