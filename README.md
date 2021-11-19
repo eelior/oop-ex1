@@ -40,8 +40,7 @@ Elevator Allocating:
    *   the elevator is assigned calls according to its capacity at any given time
  
 ## UML
-(https://user-images.githubusercontent.com/74679553/142613570-814ffd2c-ada4-4b9b-a878-629b2d918899.png)
-
+![WhatsApp Image 2021-11-19 at 13 00 30](https://user-images.githubusercontent.com/74679553/142613739-2084b6e0-8e4e-4e17-8149-133f2eb918df.jpeg)
 
 ## Assignment Links
 
