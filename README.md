@@ -39,6 +39,9 @@ Elevator Allocating:
    *   gets a workload capacity according to the elevator's efficiency
    *   the elevator is assigned calls according to its capacity at any given time
  
+## UML
+file:///home/itamar/Downloads/WhatsApp%20Image%202021-11-19%20at%2013.00.30.jpeg![image](https://user-images.githubusercontent.com/74679553/142613570-814ffd2c-ada4-4b9b-a878-629b2d918899.png)
+
 
 ## Assignment Links
 
